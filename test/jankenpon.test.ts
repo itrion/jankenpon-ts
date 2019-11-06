@@ -25,6 +25,17 @@ const Rock: Rock = {
 
 const Paper = {
     vs: (other: Shape): string => {
+        switch (other) {
+            case Rock: {
+                return 'Paper';
+            }
+            case Paper: {
+                return 'Draw'
+            }
+            case Scissors: {
+                return 'Scissors'
+            }
+        }
         return 'Unknown'
     }
 };
@@ -62,5 +73,17 @@ describe('jankenpon', () => {
 
     test('Rock vs Scissors', () => {
         expect(jankenpon('Rock', 'Scissors')).toBe('Rock')
+    });
+
+    test('Paper vs Rock', () => {
+        expect(jankenpon('Paper', 'Rock')).toBe('Paper')
+    });
+
+    test('Paper vs Paper', () => {
+        expect(jankenpon('Paper', 'Paper')).toBe('Draw')
+    });
+
+    test('Paper vs Scissors', () => {
+        expect(jankenpon('Paper', 'Scissors')).toBe('Scissors')
     });
 });
